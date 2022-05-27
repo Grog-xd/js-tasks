@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+
+}
+.err-message{
+    color: red;
+    display: none;
+}
+.active{
+    display: inherit;
+}
