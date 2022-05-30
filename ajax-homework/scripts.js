@@ -9,6 +9,13 @@ loadBtn.addEventListener("click", (e) => {
   const searchValue = searchInput.value.trim().toLowerCase();
   fetch(`https://api.github.com/users/${searchValue}`)
     .then(resultsContainer.innerHTML = '')
+      .then(response => {
+          if(response.status >= 200 && response.status< 300){
+            return response
+          } else{
+              throw new Error('Пользователь не найден')
+          }
+      })
     .then(response => response.json())
     .then(
       (data) =>
@@ -18,12 +25,15 @@ loadBtn.addEventListener("click", (e) => {
                   <p> О себе: <span>${data.bio}</span><p>
                   <p> Кол-во репозиториев: <span>${data.public_repos}</span><p>
               </div>`
-    );
+    )
+    .catch( e =>{
+        resultsContainer.innerHTML = `<div class="response-container">${e.message}</div>`
+    })
 });
 
 loadBtnUsers.addEventListener('click', e =>{
   e.preventDefault()
-  axios.get('https://jsonplaceholder.typicode.com/users', )
+  axios('https://jsonplaceholder.typicode.com/users')
       .then(resultsContainer.innerHTML = '')
       .then(response => response.data)
       .then(response => response.map(user=>
