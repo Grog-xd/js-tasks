@@ -1,28 +1,25 @@
 const btn = document.querySelector('.btn')
 const body = document.getElementsByTagName('body')[0]
 
-window.addEventListener('DOMContentLoaded', updateTheme())
+let theme = localStorage.getItem('theme')
 
+ThemeSwitch(theme)
 
-btn.addEventListener('click', (e) =>{
-    if(localStorage.getItem('theme') === 'light mode'){
-        localStorage.theme = 'dark mode'
-        updateTheme()
-    }else{
-        localStorage.theme = 'light mode'
-        updateTheme()
-    }
-})
-
-function updateTheme(){
-    switch (localStorage.theme){
-        case ('light mode'):
+function ThemeSwitch(theme){
+    switch(theme){
+        case 'light-mode':
             body.classList.remove('dark-mode')
-            btn.innerHTML ='dark mode'
+            btn.innerHTML = 'light mode'
             break
-        case ('dark mode'):
+        case 'dark-mode':
             body.classList.add('dark-mode')
-            btn.innerHTML ='light mode'
+            btn.innerHTML = 'dark mode'
             break
     }
 }
+
+
+btn.addEventListener('click', ()=>{
+    localStorage.getItem('theme') !== 'dark-mode'? localStorage.theme = 'dark-mode' : localStorage.theme = 'light-mode'
+    ThemeSwitch(localStorage.getItem('theme'))
+})
