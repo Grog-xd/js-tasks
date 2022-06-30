@@ -1,5 +1,16 @@
 {
-  "dependencies": {
-    "axios": "^0.27.2"
-  }
+  "name": "js-tasks",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grog-xd/js-tasks.git"
+  },
+  "author": "Grog-xd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grog-xd/js-tasks/issues"
+  },
+  "homepage": "https://github.com/Grog-xd/js-tasks#readme"
 }
